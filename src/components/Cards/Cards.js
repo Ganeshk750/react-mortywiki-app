@@ -12,7 +12,7 @@ const Cards = ({ results }) => {
            return <div key={id} className="col-4 mb-4 position-relative">
            <div className={`${styles.cards}`}>
               <img src={image} alt="imgs" className={`${styles.img} img-fluid`} />
-                <div style={{padding: "10px"}} className="content">
+                <div style={{padding: "10px"}} classNameName="content">
                   <div className="fs-4 fw-bold mb-4 ">{name}</div>
                    <div className="">
                       <div className="fs-6">Last location</div>
