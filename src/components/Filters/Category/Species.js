@@ -1,7 +1,7 @@
 import React from 'react'
 import FilterBTN from '../FilterBTN';
 
-const Species = () => {
+const Species = ({setPageNumber, setSpecies }) => {
 
     let species = ["Human", "Alien", "Humanoid", "Poopybutthone",
     "Mythological","Unknown", "Animal", "Disease","Robot", "Cronenberg",
@@ -15,12 +15,14 @@ const Species = () => {
       </button>
     </h2>
     <div id="collapseTwo" className="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div className="accordion-body">
+      <div className="accordion-body d-flex flex-wrap gap-3">
          {species.map((item,index) => (
            <FilterBTN  name="species" 
            key={index}
            index={index}
-           item={item}/>
+           item={item}
+           task={setSpecies}
+           setPageNumber={setPageNumber} />
          ))}
       </div>
     </div>

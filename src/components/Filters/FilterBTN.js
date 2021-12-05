@@ -1,10 +1,26 @@
 import React from 'react'
 
-const FilterBTN = ({name, index, item}) => {
+const FilterBTN = ({name, index, item, task, setPageNumber }) => {
     return (
         <div>
+        <style jsx>
+          {`
+          .x: checked + lebel {
+            background-color: #0b5ed7;
+            color: white;
+          }
+            input[type="radio"]{
+              display: none
+            }
+           `}
+        </style>
         <div class="form-check">
-        <input className="form-check-input" type="radio" 
+        <input className="form-check-input x" 
+        onClick={() => {
+          setPageNumber(1);
+          task(item);
+        }}
+        type="radio" 
         name={name}
         id={`${name}-${index}`}
          />
