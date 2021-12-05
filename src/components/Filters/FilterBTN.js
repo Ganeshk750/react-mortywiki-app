@@ -1,20 +1,18 @@
 import React from 'react'
 
-const FilterBTN = () => {
+const FilterBTN = ({name, index, item}) => {
     return (
         <div>
         <div class="form-check">
-        <input className="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" />
-        <label class="btn btn-outline-primary" for="flexRadioDisabled">
-          Single toggel
+        <input className="form-check-input" type="radio" 
+        name={name}
+        id={`${name}-${index}`}
+         />
+        <label className="btn btn-outline-primary" 
+        for={`${name}-${index}`}>
+          {item}
         </label>
       </div>
-      <div class="form-check">
-        <input className="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" />
-        <label className="form-check-label" for="flexRadioCheckedDisabled">
-          Disabled checked radio
-        </label>
-        </div>
       </div>
     )
 }
