@@ -7,16 +7,40 @@ import Filters from './components/Filters/Filters';
 import Cards from './components/Cards/Cards';
 import Pagination from './components/Pagination/Pagination';
 import Search from './components/Search/Search';
+import Navbar from './components/Navbar/Navbar';
+
+import { BrowserRouter as Router, Routes , Route } from 'react-router-dom';
+import Episodes from './Pages/Episodes';
+import Locations from './Pages/Locations';
+
+// Component
+function App(){
+  return(
+    <Router>
+       <div className="App">
+         <Navbar /> 
+       </div>
+       <Routes>
+          <Route  path="/" element={ <Home />} />
+          <Route  path="/episodes" element={ <Episodes /> } />
+          <Route  path="/location" element={ <Locations /> } />
+       </Routes>
+    </Router>
+  )
+}
 
 
-function App() {
+// Page
+const  Home = ()  => {
   let [species, setSpecies] = useState("");
-  let [gender, setGender] = useState("female");
+  let [gender, setGender] = useState("");
   let [status, setStatus] = useState("");
   let [search, setSearch] = useState("");
   let [pageNumber, setPageNumber] = useState(1);
   let [fetchedData, updateFetchedData] = useState([]);
   let { info, results } = fetchedData;
+
+  
   
   let api = `https://rickandmortyapi.com/api/character/?page=${pageNumber}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
   
@@ -29,10 +53,7 @@ function App() {
   
   return (
     <div className="App">
-        <h1 className="text-center ubuntu my-4">
-        Rick & Morty 
-        <span className="text-primary">Wiki </span>
-        </h1>
+
         <Search setPageNumber={setPageNumber} setSearch={setSearch} />
         <div className="container">
           <div className="row">
