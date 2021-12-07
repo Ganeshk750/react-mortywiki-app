@@ -1,15 +1,21 @@
 import React from 'react'
 import styles from './Cards.module.scss';
+import { Link } from 'react-router-dom';
 
 
-const Cards = ({ results }) => {
+const Cards = ({ results, page }) => {
 
     let display;
 
     if(results){
        display = results.map((ele) =>{
-           let {id, name, image, location, status} = ele;
-           return <div key={id} className="col-4 mb-4 position-relative">
+           let { id, name, image, location, status } = ele;
+           return( 
+            <Link  
+              style={{textDecoration: "none"}}
+              to={`${page}${id}`}
+              key={id}
+             className="col-4 mb-4 position-relative text-dark">
            <div className={`${styles.cards}`}>
               <img src={image} alt="imgs" className={`${styles.img} img-fluid`} />
                 <div style={{padding: "10px"}} classNameName="content">
@@ -32,7 +38,8 @@ const Cards = ({ results }) => {
                  }
               })()}
 
-           </div>
+           </Link>
+           )
        });
     }else{
         display = "No Characters Found :/"
