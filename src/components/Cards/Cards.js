@@ -3,49 +3,70 @@ import styles from './Cards.module.scss';
 import { Link } from 'react-router-dom';
 
 
-const Cards = ({ results, page }) => {
-
+const Cards = ({ page, results }) => {
     let display;
-
-    if(results){
-       display = results.map((ele) =>{
-           let { id, name, image, location, status } = ele;
-           return( 
-            <Link  
-              style={{textDecoration: "none"}}
-              to={`${page}${id}`}
-              key={id}
-             className="col-4 mb-4 position-relative text-dark">
-           <div className={`${styles.cards}`}>
-              <img src={image} alt="imgs" className={`${styles.img} img-fluid`} />
-                <div style={{padding: "10px"}} classNameName="content">
-                  <div className="fs-4 fw-bold mb-4 ">{name}</div>
-                   <div className="">
-                      <div className="fs-6">Last location</div>
-                       <div className="fs-5">{location.name}</div>
-                      </div>
-                  </div>
+  
+    if (results) {
+      display = results.map((ele) => {
+        let { id, image, name, status, location } = ele;
+  
+        return (
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`${page}${id}`}
+            key={id}
+            className="col-lg-4 col-md-6 col-sm-6 col-12 mb-4 position-relative text-dark"
+          >
+            <div
+              className={`${styles.card} d-flex flex-column justify-content-center`}
+            >
+              <img className={`${styles.img} img-fluid`} src={image} alt="" />
+              <div className={`${styles.content}`}>
+                <div className="fs-5 fw-bold mb-4">{name}</div>
+                <div className="">
+                  <div className="fs-6 fw-normal">Last Location</div>
+                  <div className="fs-5">{location.name}</div>
+                </div>
               </div>
-              {(() =>{
-                 if(status === "Dead"){
-                     return (
-                        <div className={`${styles.badge} position-absolute badge bg-danger`}>{status}</div> 
-                     )
-                 }else if(status === "Alive"){
-                     return (<div className={`${styles.badge} position-absolute badge bg-success`}>{status}</div>)
-                 } else{
-                     return (<div className={`${styles.badge} position-absolute badge bg-secondary`}>{status}</div>)
-                 }
-              })()}
-
-           </Link>
-           )
-       });
-    }else{
-        display = "No Characters Found :/"
+            </div>
+  
+            {(() => {
+              if (status === "Dead") {
+                return (
+                  <div
+                    className={`${styles.badge} position-absolute badge bg-danger`}
+                  >
+                    {status}
+                  </div>
+                );
+              } else if (status === "Alive") {
+                return (
+                  <div
+                    className={`${styles.badge} position-absolute badge bg-success`}
+                  >
+                    {status}
+                  </div>
+                );
+              } else {
+                return (
+                  <div
+                    className={`${styles.badge} position-absolute badge bg-secondary`}
+                  >
+                    {status}
+                  </div>
+                );
+              }
+            })()}
+          </Link>
+        );
+      });
+    } else {
+      display = "No Characters Found :/";
     }
-    return  <>{display}</>;
+  
+    return <>{display}</>;
+  };
+  
+  export default Cards;
 
-};
 
-export default Cards;

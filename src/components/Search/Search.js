@@ -3,7 +3,8 @@ import styles from './Search.module.scss';
 
 const Search = ({ setSearch, setPageNumber }) => {
     return (
-         <form className="d-flex justify-content-center gap-4 mb-5">
+         <form className="d-flex  flex-sm-row flex-column align-items-center
+          justify-content-center gap-4 mb-5">
             <input 
              placeholder="Search for character" 
              type="text"  className={styles.input}

@@ -1,21 +1,20 @@
-import React, { useState , useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const CardDetails = () => {
- 
- let { id } = useParams();
- let [fetchedData, updateFetchedData] = useState([]);
- let { name, image, location, origin, gender, species, status, type } = fetchedData;
+  let { id } = useParams();
 
- let api = `https://rickandmortyapi.com/api/character/${id}`;
+  let [fetchedData, updateFetchedData] = useState([]);
+  let { name, location, origin, gender, image, status, species } = fetchedData;
+
+  let api = `https://rickandmortyapi.com/api/character/${id}`;
 
   useEffect(() => {
-    (async function(){
+    (async function () {
       let data = await fetch(api).then((res) => res.json());
       updateFetchedData(data);
     })();
   }, [api]);
-
 
   return (
     <div className="container d-flex justify-content-center mb-5">
@@ -54,4 +53,5 @@ const CardDetails = () => {
     </div>
   );
 };
+
 export default CardDetails;
