@@ -14,10 +14,7 @@ const Pagination = ({ setPageNumber, pageNumber, info }) => {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  let updateDimension = () =>{
-     setWidth(window.innerWidth);
-     return () => window.removeEventListener("resize", updateDimension);
-  }
+
     return (
       <>
       <style jsx>
