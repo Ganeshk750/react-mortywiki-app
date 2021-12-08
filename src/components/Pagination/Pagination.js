@@ -8,14 +8,14 @@ const Pagination = ({ setPageNumber, pageNumber, info }) => {
   const updateDimensions = () => {
     setWidth(window.innerWidth);
   };
-  
+
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   let updateDimension = () =>{
-     setWitdth(window.innerWidth);
+     setWidth(window.innerWidth);
      return () => window.removeEventListener("resize", updateDimension);
   }
     return (
