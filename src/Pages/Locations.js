@@ -42,13 +42,13 @@ const Locations = () => {
             </h6>
             </div>
             <div className="row">
-               <div className="col-3">
+               <div className="col-lg-3 col-12 mb-4">
                    <h4 className="text-center mb-4">
                        Pick Location
                    </h4>
                    <InputGroup total={126} name="Location" setId={setId} />
                </div>
-                <div className="col-8">
+                <div className="col-lg-8 col-12">
                   <div className="row">
                      <Cards  results={results} page="/location/" />
                   </div>
